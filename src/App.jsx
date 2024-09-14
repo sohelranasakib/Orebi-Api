@@ -6,6 +6,7 @@ import Navber from "./components/Navber"
 import NewArrivals from "./components/NewArrivals"
 import Phone from "./components/Phone"
 import SpecialOffer from "./components/SpecialOffer"
+import ToTop from "./components/ToTop"
 import Footer from "./Footer"
 
 
@@ -23,6 +24,8 @@ function App() {
     <Phone/>
     <SpecialOffer/>
     <Footer/>
+    <ToTop/>
+    
     </>
   )
 }

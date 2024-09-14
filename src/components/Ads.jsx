@@ -7,7 +7,7 @@ import ads3 from "../assets/Ad3.png"
 
 const Ads = () => {
   return (
-    <section className=' py-[70px] '>
+    <section className=' lg:py-[70px] py-[10px] lg:px-0 px-2'>
         <Container>
             <Flex className=" justify-between">
                 <div className=" w-[49%]">
