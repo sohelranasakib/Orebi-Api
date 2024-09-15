@@ -53,23 +53,23 @@ const Navber = () => {
                         </div>
                         {cartShow &&
                             <div className=" absolute z-50 top-[150px] lg:left-[120px] bg-[#262626] lg:w-[300px] w-[200px] rounded-lg">
-                                <ul>
-                                    <li className="text-[rgba(255,255,255,0.9)] font-sans text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 ">
+                                <ul className=' py-2 px-2'>
+                                    <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
                                         Accesories
                                     </li>
-                                    <li className="text-[rgba(255,255,255,0.9)] font-sans text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 ">
+                                    <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
                                         Furniture
                                     </li>
-                                    <li className="text-[rgba(255,255,255,0.9)] font-sans text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 ">
+                                    <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
                                         Electronics
                                     </li>
-                                    <li className="text-[rgba(255,255,255,0.9)] font-sans text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 ">
+                                    <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
                                         Clothes
                                     </li>
-                                    <li className="text-[rgba(255,255,255,0.9)] font-sans text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 ">
+                                    <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
                                         Bags
                                     </li>
-                                    <li className="text-[rgba(255,255,255,0.9)] font-sans text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 ">
+                                    <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
                                         Home appliances
                                     </li>
                                 </ul>

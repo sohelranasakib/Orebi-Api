@@ -1,30 +1,22 @@
-import Ads from "./components/Ads"
-import Banner from "./components/Banner"
-import FeaturedProducts from "./components/FeaturedProducts"
-import Header from "./components/Header"
-import Navber from "./components/Navber"
-import NewArrivals from "./components/NewArrivals"
-import Phone from "./components/Phone"
-import SpecialOffer from "./components/SpecialOffer"
-import ToTop from "./components/ToTop"
-import Footer from "./Footer"
+import RootLayout from "./components/RootLayout"
+import Home from "./pages/Home"
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
+import Products from "./pages/Products"
 
+
+let router = createBrowserRouter(createRoutesFromElements(
+  <Route element={<RootLayout/>}>
+    <Route index element={<Home/>}></Route>
+    <Route path="/product" element={<Products/>}></Route>
+  </Route>
+))
 
 function App() {
   
 
   return (
     <>
-    <Header/>
-    <Navber/>
-    <Banner/>
-    <Ads/>
-    <NewArrivals/>
-    <FeaturedProducts/>
-    <Phone/>
-    <SpecialOffer/>
-    <Footer/>
-    <ToTop/>
+   <RouterProvider router={router}/>
     
     </>
   )

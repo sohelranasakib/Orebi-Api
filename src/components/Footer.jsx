@@ -1,8 +1,8 @@
 import React from 'react'
-import imgl from "../src/assets/logo.png"
+import imgl from "../assets/logo.png"
 import { FaFacebookF,FaLinkedinIn,FaInstagram  } from "react-icons/fa";
-import Container from './components/Container';
-import Flex from './components/Flex';
+import Container from './Container';
+import Flex from './Flex';
 
 const Footer = () => {
   return (
