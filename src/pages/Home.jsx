@@ -8,6 +8,7 @@ import SpecialOffer from "../components/SpecialOffer"
 
 
 
+
 const Home = () => {
   return (
     <>
@@ -17,6 +18,7 @@ const Home = () => {
     <FeaturedProducts/>
     <Phone/>
     <SpecialOffer/>
+    
     </>
   )
 }

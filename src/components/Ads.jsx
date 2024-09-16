@@ -4,6 +4,7 @@ import Flex from './Flex'
 import ads1 from "../assets/Ad1.png"
 import ads2 from "../assets/Ad2.png"
 import ads3 from "../assets/Ad3.png"
+import { Link } from 'react-router-dom'
 
 const Ads = () => {
   return (
@@ -18,7 +19,10 @@ const Ads = () => {
                         <img src={ads2} alt="" />
                     </div>
                     <div className=" ">
+                        <Link to="/furniture">
                         <img src={ads3} alt="" />
+                        </Link>
+                       
                     </div>
                 </div>
             </Flex>

@@ -1,32 +1,30 @@
-
 import React, { useContext } from 'react'
-import Container from './Container'
-import { FaCartShopping } from "react-icons/fa6";
-import { FaHeart, FaSearchPlus } from "react-icons/fa";
+import Container from '../components/Container'
+import Flex from '../components/Flex'
+import { apiData } from '../components/ContextApi'
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
-import img from "../assets/arrivals.png"
-import { apiData } from './ContextApi';
 import { Link } from 'react-router-dom';
+import { FaSearchPlus } from "react-icons/fa";
 
-
-const FeaturedProducts = () => {
+const FurnitureP = () => {
     let data = useContext(apiData)
+    
 
-
-
-    let featuredproducts = data.filter(product => product.id >= 176 && product.id <= 183);
-
-
-
-
-    return (
-        <section className='lg:py-[30px] py-[2px]'>
-
-            <div className="lg:px-0 px-2">
+    let furniture = data.filter(product => product.id >= 11 && product.id <= 15);
+    
+  return (
+    <section className=' pt-[220px] pb-[50px] lg:px-0 px-2'>
+        <Container>
+        <div className=" items-center pb-[40px]">
+                    <h2 className='font-sans font-bold   text-[32px]  text-[#262626] '>Furniture Products</h2>
+                    <h3 className='font-sans font-bold   text-[16px]  text-[#262626] '><Link to="/">Home </Link> +  Furniture Products</h3>
+                </div>
+        </Container>
+       <div className="">
                 <Tabs>
                     <TabList className=' lg:pb-12 flex justify-center lg:gap-10 gap-1'>
                         <Tab><h3 className="text-[28px] font-bold font-sans lg:px-5 px-2 border-b-2"
-                        >Featured Products</h3></Tab>
+                        >Furniture</h3></Tab>
                     </TabList>
                     <Container>
 
@@ -34,7 +32,7 @@ const FeaturedProducts = () => {
                         <TabPanel>
                        
                             <div className=" flex justify-between flex-wrap">
-                            {featuredproducts.map((item)=>(
+                            {furniture.map((item)=>(
                                  <div className=" lg:w-[23%] w-[48%] py-5">
                                  <div className="relative  w-[100%] group ">
                                  <Link to={`/product/${item.id}`}>
@@ -75,11 +73,8 @@ const FeaturedProducts = () => {
                     </Container>
                 </Tabs>
             </div>
-        </section>
-    )
+    </section>
+  )
 }
 
-export default FeaturedProducts
-
-
-
+export default FurnitureP

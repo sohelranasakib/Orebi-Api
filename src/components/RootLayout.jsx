@@ -3,6 +3,7 @@ import Header from "./Header"
 import Navber from "./Navber"
 import Footer from "./Footer"
 import { Outlet } from 'react-router-dom'
+import ToTop from "./ToTop"
 
 
 const RootLayout = () => {
@@ -12,6 +13,7 @@ const RootLayout = () => {
     <Navber/>
     <Outlet/>
     <Footer/>
+    <ToTop/>
     </>
   )
 }

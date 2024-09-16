@@ -5,6 +5,7 @@ import { FaBarsStaggered, FaCartArrowDown } from 'react-icons/fa6';
 import { FaSearch, FaUser, FaCaretDown } from 'react-icons/fa';
 import { GiTireIronCross } from 'react-icons/gi';
 import logo from "../assets/logo.png"
+import { Link } from 'react-router-dom';
 
 const Navber = () => {
     let [cartShow, setCartShow] = useState(false);
@@ -58,16 +59,16 @@ const Navber = () => {
                                         Accesories
                                     </li>
                                     <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
-                                        Furniture
+                                        <Link to="/furniture">Furniture</Link>
                                     </li>
                                     <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
-                                        Electronics
+                                        <Link to="/electronics">Electronics</Link>
                                     </li>
                                     <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
-                                        Clothes
+                                        <Link to="/clothes">Clothes</Link>
                                     </li>
                                     <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
-                                        Bags
+                                       <Link to="/bag"> Bags</Link>
                                     </li>
                                     <li className="text-[rgba(255,255,255,0.9)] font-sans font-bold text-[16px] cursor-pointer py-2 pl-3 duration-500 ease-in-out hover:pl-6 hover:bg-white hover:text-black rounded-lg ">
                                         Home appliances
