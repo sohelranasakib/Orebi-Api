@@ -12,11 +12,15 @@ const Ads = () => {
         <Container>
             <Flex className=" justify-between">
                 <div className=" w-[49%]">
+                <Link to="/electronics">
                     <img className=' h-[98%]' src={ads1} alt="" />
+                    </Link>
                 </div>
                 <div className=" w-[49%]">
                     <div className=" pb-[20px]">
+                        <Link to="/electronics">
                         <img src={ads2} alt="" />
+                        </Link>
                     </div>
                     <div className=" ">
                         <Link to="/furniture">

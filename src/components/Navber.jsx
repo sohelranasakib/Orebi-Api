@@ -87,13 +87,18 @@ const Navber = () => {
                             </div>
                         </div>
                     </div>
-                    <div className=" w-[30%] flex gap-2 justify-end">
-                        <div ref={accountref} className=" relative flex ml-3">
+                    <div className=" w-[30%] flex gap-2 justify-end items-center pt-4">
+                        <div ref={accountref} className=" relative  ml-3 group overflow-hidden">
+                            <div className="flex">
                             <FaUser className=' text-[22px]' />
                             <FaCaretDown className=' text-[24px]' />
+                            </div>
+                            <h3 className='lg:text-[16px] text-[14px] opacity-0 group-hover:opacity-[1] duration-300 ease-in-out'>Account</h3>
                         </div>
-                        <div ref={userref} className=" relative mr-3">
+                      
+                        <div ref={userref} className=" relative mr-3 group overflow-hidden">
                             <FaCartArrowDown className=' text-[22px]' />
+                            <h3 className='lg:text-[16px] text-[14px] opacity-0 group-hover:opacity-[1] duration-300 ease-in-out'>Cart</h3>
                         </div>
                     </div>
                     {accountShow &&
@@ -102,12 +107,16 @@ const Navber = () => {
                                 <h3 className='w-[148px] h-[50px] border-2  inline-block text-center leading-[50px] font-sans font-bold  text-[16px] text-[#262626] duration-500 ease-in-out bg-white  hover:bg-[green] hover:text-[#fff] rounded-lg' >My Account</h3>
                             </div>
                             <div className=" text-center py-2">
+                                <Link to="/login">
                                 <h3 className='w-[148px] h-[50px] border-2  inline-block text-center leading-[50px] font-sans font-bold  text-[16px]  text-[#262626] duration-500 ease-in-out bg-white hover:bg-[green] hover:text-[#fff] rounded-lg' >
                                     Log In
                                 </h3>
+                                </Link>
                             </div>
                             <div className=" text-center">
+                                <Link to="/signup">
                                 <h3 className='w-[148px] h-[50px] border-2  inline-block text-center leading-[50px] font-sans font-bold  text-[16px]  text-[#262626] duration-500 ease-in-out bg-white hover:bg-[green] hover:text-[#fff] rounded-lg' >Sign up</h3>
+                                </Link>
                             </div>
                         </div>
                     }

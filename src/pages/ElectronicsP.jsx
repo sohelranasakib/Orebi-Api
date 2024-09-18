@@ -28,12 +28,12 @@ const ElectronicsP = () => {
        <div className="">
                 <Tabs>
                     <TabList className=' lg:pb-12 flex justify-center lg:gap-10 gap-1'>
-                        <Tab><h3 className="text-[28px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Phone</h3></Tab>
-                        <Tab><h3 className="text-[28px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Labtop</h3></Tab>
-                        <Tab><h3 className="text-[28px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Tab</h3></Tab>
-                        <Tab><h3 className="text-[28px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Wireless</h3></Tab>
-                        <Tab><h3 className="text-[28px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Watch 1</h3></Tab>
-                        <Tab><h3 className="text-[28px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Watch 2</h3></Tab>
+                        <Tab><h3 className="lg:text-[28px] text-[12px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Phone</h3></Tab>
+                        <Tab><h3 className="lg:text-[28px] text-[12px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Labtop</h3></Tab>
+                        <Tab><h3 className="lg:text-[28px] text-[12px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Tab</h3></Tab>
+                        <Tab><h3 className="lg:text-[28px] text-[11px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Wireless</h3></Tab>
+                        <Tab><h3 className="lg:text-[28px] text-[11px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Watch1</h3></Tab>
+                        <Tab><h3 className="lg:text-[28px] text-[11px] font-bold font-sans lg:px-5 px-2 border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-700 ease-in-out">Watch2</h3></Tab>
                     </TabList>
                     <Container>
 

@@ -21,7 +21,7 @@ const ToTop = () => {
     return (
         <>
             {isVisible && <div>
-                <button className="text-white bg-[#181617] flex justify-center items-center text-[27px] z-[50] fixed bottom-5 right-1 rounded-full lg:h-12 lg:w-12" onClick={handleToTop}><RxCaretUp className='icon2' /></button>
+                <button className="text-white bg-[#181617] flex justify-center items-center text-[27px] z-[50] fixed bottom-[40px] right-1 rounded-full lg:h-12 lg:w-12" onClick={handleToTop}><RxCaretUp className='icon2' /></button>
             </div>}
         </>
     )

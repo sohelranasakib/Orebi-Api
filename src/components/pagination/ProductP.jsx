@@ -25,11 +25,8 @@ const ProductP = ({allData}) => {
             <div className=" absolute top-[14px] lg:left-[10px] left-[5px]">
               <a className=' font-sans lg:font-medium lg:text-[16px] text-[10px] lg:px-[20px] lg:py-[7px] bg-black text-white rounded-lg'>{item.discountPercentage}%</a>
             </div>
-            <div className="  items-center absolute lg:top-[150px] top-[78px] lg:left-[120px] left-[70px] lg:opacity-0 group-hover:opacity-[1] duration-500 ease-in-out">
-              <div className=" flex justify-end">
-                <h3><FaSearchPlus className=' lg:text-[26px] text-[red] lg:opacity-0' /></h3>
-              </div>
-              <a className=' font-sans lg:font-medium lg:text-[16px] text-[10px] lg:px-[20px] lg:py-[7px] py-[3px] bg-[green] text-white rounded-lg'> <Link to={`/product/${item.id}`}> View Shop</Link></a>
+            <div className=" flex gap-4  items-center absolute lg:top-[150px] top-[80px] lg:left-[120px] left-[70px] opacity-0 lg:group-hover:opacity-[1] duration-500 ease-in-out">
+               <a className=' font-sans lg:font-medium lg:text-[16px] text-[10px] lg:px-[20px] lg:py-[7px] py-[3px] bg-[green] text-white rounded-lg'> <Link to={`/product/${item.id}`}> View Shop</Link></a>
 
             </div>
           </div>
@@ -37,6 +34,12 @@ const ProductP = ({allData}) => {
             <h2 className='font-sans font-bold   lg:text-[20px] text-[12px]  text-[#262626]'>{item.title}</h2>
             <h3 className='font-sans font-bold   lg:text-[22px] text-[12px]  text-[#262626]'>${item.price}</h3>
           </div>
+          <div className=" flex gap-4 items-center  lg:top-[150px] top-[80px] lg:left-[120px] left-[70px] ">
+              <a className=' font-sans lg:font-medium lg:text-[16px] text-[10px] lg:px-[20px] lg:py-[7px] py-[3px] bg-[green] text-white rounded-lg lg:opacity-0'> <Link to={`/product/${item.id}`}> View Shop</Link></a>
+              <div className=" flex">
+              <h3><FaSearchPlus className=' lg:text-[26px] text-[22px] text-[red] lg:opacity-0' /></h3>
+              </div>
+            </div>
         </div>
       ))}
 

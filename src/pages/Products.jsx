@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Container from '../components/Container'
 import Flex from '../components/Flex'
 import { FaListUl } from "react-icons/fa";
@@ -7,6 +7,7 @@ import arrivals from "../assets/arrivals.png"
 import { apiData } from '../components/ContextApi';
 import ProductP from '../components/pagination/ProductP';
 import PaginationArea from '../components/pagination/PaginationArea';
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
 const Products = () => {
     let data = useContext(apiData)
@@ -19,38 +20,125 @@ const Products = () => {
 
     let allData = data.slice(firstPage, lastPage)
 
+    let [category, setCategory] = useState([]);
+    let [brand, setBrand] = useState([]);
+    let [price, setPrice] = useState([]);
+    // let [categorySearchFilter,setCategorySearchFilter] = useState([]);
+    let [catshow, setCatShow] = useState(false)
+    let [brandshow, setBrandShow] = useState(false)
+    let [priceshow, setPriceShow] = useState(false)
+
+    let [lowPrice,setLowprice] = useState("");
+    let [highPrice,setHighprice] = useState("");
+    let [filterprice,setFilterprice] = useState([]);
+
+
+    useEffect(() => {
+        setCategory([...new Set(data.map((item) => item.category))])
+
+
+        setBrand([...new Set(data.map((item) => item.brand))])
+    }, [data])
+
+    // useEffect(()=>{
+    //     setPrice([...new Set(data.map((item)=>item.price)) ])
+    //   },[data])
+
 
     let pageNumber = []
-    
-    for (let i = 0; i < Math.ceil(data.length / perPage); i++) {
-        pageNumber.push(i)
-      }
-    
-      let Paginate = (pageNumber)=>{
-        setCureentPage(pageNumber + 1);
-        
-      }
 
-      let next = ()=>{
-        if(currentPage < pageNumber.length){
-            setCureentPage((state)=>state + 1);
+    for (let i = 0; i < Math.ceil( data.length / perPage); i++) {
+        pageNumber.push(i)
+    }
+
+    let Paginate = (pageNumber) => {
+        setCureentPage(pageNumber + 1);
+
+    }
+
+    let next = () => {
+        if (currentPage < pageNumber.length) {
+            setCureentPage((state) => state + 1);
         }
-      }
-      let prev = ()=>{
-        if(currentPage > 1){
-            setCureentPage((state)=>state - 1);
+    }
+    let prev = () => {
+        if (currentPage > 1) {
+            setCureentPage((state) => state - 1);
         }
-      }
+    }
+
+    // let handlePrice = (value) =>{
+    //     setLowprice(value.low)
+    //     setHighprice(value.high)
+    //     let priceFilter = data.filter((item)=>item.price > value.low && item.price < value.high)
+    //     setFilterprice(priceFilter);
+    //    }
+      
 
     return (
-        <section className=' pt-[210px] py-[50px]'>
+        <section className=' pt-[210px] py-[50px] lg:px-0 px-1'>
             <Container>
                 <div className=" items-center pb-[40px]">
                     <h2 className='font-sans font-bold   text-[42px]  text-[#262626] '>Products</h2>
                     <h3 className='font-sans font-bold   text-[16px]  text-[#262626] '>Home  +  Products</h3>
                 </div>
                 <Flex>
-                    <div className=" w-[29%]">Category</div>
+                    <div className=" w-[29%] lg:mr-1 mr-1">
+
+                        <div className="">
+                            <h2 onClick={() => setCatShow(!catshow)} className='font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center  cursor-pointer '> Category {catshow == true ? <TiArrowSortedUp className='text-[28px] ' /> : <TiArrowSortedDown className='text-[28px] ' />}</h2>
+
+
+                            {catshow &&
+                                <ul className='overflow-y-scroll lg:h-[300px] h-[100px] '>
+                                    {category.map((item) => (
+                                        <li className=' relative font-sans font-semibold   lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>{item}</li>
+                                    ))}
+                                    <h3 className=' '></h3>
+                                </ul>
+                            }
+
+                        </div>
+                        <div className="">
+                            <h2 onClick={() => setBrandShow(!brandshow)} className='font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center  cursor-pointer '> Brand {catshow == true ? <TiArrowSortedUp className='text-[28px] ' /> : <TiArrowSortedDown className='text-[28px] ' />}</h2>
+
+
+                            {brandshow &&
+                                <ul className='overflow-y-scroll lg:h-[300px] h-[100px] '>
+                                    {brand.map((item) => (
+                                        <li className=' relative font-sans font-semibold   lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>{item}</li>
+                                    ))}
+                                    <h3 className=' '></h3>
+                                </ul>
+                            }
+
+                        </div>
+                        <div className="">
+                            <div className=" ">
+                                <h2 onClick={() => setPriceShow(!priceshow)} className='font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center cursor-pointer '>Price {priceshow == true ? <TiArrowSortedUp className='text-[28px]' /> : <TiArrowSortedDown className='text-[28px]' />}</h2>
+
+                            </div>
+                            {priceshow &&
+
+                                <ul className='overflow-y-scroll lg:h-[300px] h-[100px]  '>
+
+
+                                    <li onClick={()=>handlePrice({low:0 , high:10})} className=' relative font-sans font-semibold   lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>0$ - 10$</li>
+                                    <li onClick={()=>handlePrice({low:10 , high:20})} className=' relative font-sans font-semibold   lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>10$ - 20$</li>
+                                    <li onClick={()=>handlePrice({low:20 , high:50})} className=' relative font-sans font-semibold  lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>20$ - 50$</li>
+                                    <li onClick={()=>handlePrice({low:50 , high:100})} className=' relative font-sans font-semibold  lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>50$ - 100$</li>
+                                    <li onClick={()=>handlePrice({low:100 , high:500})} className=' relative font-sans font-semibold  lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>100$ - 500$</li>
+                                    <li onClick={()=>handlePrice({low:500 , high:1000})} className=' relative font-sans font-semibold  lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>500$ - 1000$</li>
+                                    <li onClick={()=>handlePrice({low:1000 , high:2000})} className=' relative font-sans font-semibold  lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>1000$ - 2000$</li>
+                                    <li onClick={()=>handlePrice({low:2000 , high:4000})} className=' relative font-sans font-semibold  lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>2000$ - 4000$</li>
+
+
+                                </ul>
+                            }
+
+                        </div>
+                    </div>
+
                     <div className=" w-[68%]">
                         <div className=" flex justify-between pb-[30px]">
                             <div className="flex lg:gap-4 gap-2 items-center">
@@ -82,12 +170,12 @@ const Products = () => {
                         </div>
 
 
-                        <div className="flex justify-between flex-wrap lg:gap-0 gap-1">
+                        <div className="flex justify-between flex-wrap">
                             <ProductP allData={allData} />
                         </div>
-                          <div className=" text-end">
-                             <PaginationArea pageNumber={pageNumber} Paginate={Paginate} currentPage={currentPage} next={next} prev={prev}/>
-                          </div>
+                        <div className=" text-end">
+                            <PaginationArea pageNumber={pageNumber} Paginate={Paginate} currentPage={currentPage} next={next} prev={prev} />
+                        </div>
                     </div>
                 </Flex>
             </Container>

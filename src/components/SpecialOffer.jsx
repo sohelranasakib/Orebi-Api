@@ -43,14 +43,14 @@ const SpecialOffer = () => {
                                    <div className=" absolute lg:top-[-30px] lg:group-hover:top-[30px]  top-0 lg:left-[20px] lg:right-0 right-0 lg:opacity-0 group-hover:opacity-[1] duration-500 ease-in-out">
                                        <a className=' font-sans font-bold lg:text-[18px] lg:py-[5px] lg:px-[25px] px-[10px] bg-[#262626] text-[#fff] rounded-lg inline-block ' >New</a>
                                    </div>    
-                                   <div className=" flex items-center gap-5 lg:opacity-[0] lg:group-hover:top-[240px] duration-500 ease-in-out lg:group-hover:opacity-[1]  absolute lg:top-[300px] top-[140px] left-[50%] translate-x-[-50%]">
+                                   <div className=" flex items-center gap-5 lg:opacity-[0] lg:group-hover:top-[240px] duration-500 ease-in-out lg:group-hover:opacity-[1]  absolute lg:top-[300px] top-[150px] left-[50%] translate-x-[-50%]">
                                       <h3 className=' lg:h-[40px] h-[20px] lg:w-[100px] w-[80px] flex justify-center items-center bg-[#08D15F] rounded-[5px] text-[#fff] text-[13px]'>
                                       <Link to={`/product/${item.id}`}>
                                       View Details
                                       </Link>
                                       </h3>
                                       <div className="">
-                                      <FaSearchPlus className=' lg:text-[26px] text-[red]'/>
+                                      <FaSearchPlus className=' lg:text-[26px] text-[22px] text-[red]'/>
                                       </div>
                                    </div>
 

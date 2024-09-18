@@ -33,17 +33,25 @@ const Header = () => {
         <div className="w-[75%] ">
         <ul className={`lg:flex lg:flex-row flex flex-col gap-y-3 gap-x-10  pl-[20px] pt-[20px] lg:pt-0 font-sans text-[#767676] text-[18px] font-medium lg:static fixed duration-[800ms] px-2 ${show == true ? "bg-[#262626] top-[0px] left-0 w-1/2 h-full py-2" : "top-[0px] left-[-250px] h-full"}`}>
         <li className='text-white flex justify-between items-center lg:hidden'>Menu <RxCross2 className='mr-[20px]'/></li>
+
+        <Link to="/">
             <li  className='font-sans cursor-pointer font-bold py-[5px] lg:py-0 text-[16px]  text-[#767676]  duration-700 ease-in-out hover:lg:text-[#262626] hover:text-[#262626]  hover:pl-[20px] hover:lg:pl-[0] hover:bg-white rounded-lg'>
-            <Link to="/">Home</Link></li>
+            Home</li> </Link>
+
+            <Link to="/product"> 
             <li className='font-sans cursor-pointer font-bold py-[5px] lg:py-0 text-[16px]  text-[#767676] duration-700 ease-in-out hover:lg:text-[#262626]   hover:pl-[20px] hover:lg:pl-[0] hover:bg-white hover:text-black rounded-lg '>
-              <Link to="/product">Shop</Link>
-            </li>
+              Shop
+            </li>  </Link>
+
+              <Link to="/about">
             <li className='font-sans cursor-pointer font-bold py-[5px] lg:py-0 text-[16px]  text-[#767676] duration-700 ease-in-out hover:lg:text-[#262626] hover:text-[#262626]  hover:pl-[20px] hover:lg:pl-[0] hover:bg-white rounded-lg'>
               About
-            </li>
+            </li> </Link>
+
+            <Link to="/contact">
             <li className='font-sans cursor-pointer font-bold py-[5px] lg:py-0 text-[16px]  text-[#767676] duration-700 ease-in-out hover:lg:text-[#262626] hover:text-[#262626]  hover:pl-[20px] hover:lg:pl-[0] hover:bg-white rounded-lg'>
              Contacts
-            </li>
+            </li> </Link>
             <li className='font-sans cursor-pointer font-bold py-[5px] lg:py-0 text-[16px] text-[#767676] duration-700 ease-in-out hover:lg:text-[#262626] hover:text-[#262626]  hover:pl-[20px] hover:lg:pl-[0] hover:bg-white rounded-lg'>Journal</li>
           </ul>
         </div>

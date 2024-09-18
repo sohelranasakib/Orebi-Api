@@ -7,6 +7,12 @@ import FurnitureP from "./pages/FurnitureP"
 import ClothesP from "./pages/ClothesP"
 import BagP from "./pages/BagP"
 import ElectronicsP from "./pages/ElectronicsP"
+import Contacts from "./pages/Contacts"
+import About from "./pages/About"
+import CheckOut from "./pages/CheckOut"
+import Login from "./pages/Login"
+import SignUp from "./pages/SignUp"
+
 
 
 let router = createBrowserRouter(createRoutesFromElements(
@@ -18,6 +24,12 @@ let router = createBrowserRouter(createRoutesFromElements(
     <Route path="/clothes" element={<ClothesP/>}></Route>
     <Route path="/bag" element={<BagP/>}></Route>
     <Route path="/electronics" element={<ElectronicsP/>}></Route>
+    <Route path="/contact" element={<Contacts/>}></Route>
+    <Route path="/about" element={<About/>}></Route>
+    <Route path="/checkout" element={<CheckOut/>}></Route>
+    <Route path="/login" element={<Login/>}></Route>
+    <Route path="/signup" element={<SignUp/>}></Route>
+    
   </Route>
 ))
 
