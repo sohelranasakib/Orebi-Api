@@ -79,12 +79,12 @@ const Navber = () => {
                     </div>
                     <div className="lg:w-[40%] w-full">
                         <div className="">
-                            <div className="relative">
-                                <input placeholder="search..." type="search" className="lg:w-full  lg:h-[50px]  h-[50px] top-[50px] border-2  outline-none px-3 rounded-lg" />
-                                <div className="absolute top-[50%] translate-y-[-50%] right-[20px]">
-                                    <FaSearch />
-                                </div>
+                              <div className="relative inline-block">
+                            <input type="search" placeholder='Type to search' className='border-[2px] border-[#F0F0F0] lg:w-[644px] w-[300px] py-4 pl-5 pr-12 outline-none' />
+                            <div className="absolute top-[50%] right-[15px] translate-y-[-50%]">
+                                <FaSearch />
                             </div>
+                        </div>
                         </div>
                     </div>
                     <div className=" w-[30%] flex gap-2 justify-end items-center pt-4">
@@ -104,7 +104,9 @@ const Navber = () => {
                     {accountShow &&
                         <div className="absolute z-50 top-[150px] lg:right-[150px] right-4 w-[200px] py-[10px] bg-[#262626]">
                             <div className=" text-center">
+                                <Link to="/myaccount">
                                 <h3 className='w-[148px] h-[50px] border-2  inline-block text-center leading-[50px] font-sans font-bold  text-[16px] text-[#262626] duration-500 ease-in-out bg-white  hover:bg-[green] hover:text-[#fff] rounded-lg' >My Account</h3>
+                                </Link>
                             </div>
                             <div className=" text-center py-2">
                                 <Link to="/login">
@@ -134,8 +136,13 @@ const Navber = () => {
                                 <GiTireIronCross />
                             </div>
                         </div>
-                        <div className=" flex justify-center pt-2">
-                            <a className=' font-sans font-bold px-[25px] text-center py-[8px] border-2 bg-white rounded-lg hover:bg-[green] hover:text-white duration-700 ease-in-out' href="#">View Shop</a>
+                        <div className=" flex justify-center gap-2 pt-2">
+                            <Link to="/cart">
+                            <a className=' font-sans font-bold px-[25px] text-center py-[8px] border-2 bg-white rounded-lg hover:bg-[green] hover:text-white duration-700 ease-in-out' href="#">View Cart</a>
+                            </Link>
+                            <Link to="/Checkout">
+                            <a className=' font-sans font-bold px-[25px] text-center py-[8px] border-2 bg-white rounded-lg hover:bg-[green] hover:text-white duration-700 ease-in-out' href="#">Check Out</a>
+                            </Link>
                         </div>
 
                     </div>

@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import Container from '../components/Container'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import axios from 'axios'
 import Flex from '../components/Flex'
 import arrivals from "../assets/arrivals.png"
-import { FaStar, FaRegStar, } from "react-icons/fa6";
+import { FaStar, FaRegStar, FaPlus } from "react-icons/fa6";
 import { FaStarHalfAlt } from "react-icons/fa";
+import { GiTireIronCross } from "react-icons/gi";
+import { BuyNow } from '../components/slice/productSlice'
 
 
 const ProductDetails = () => {
     let [singleData, setSingleData] = useState([])
     let productId = useParams()
 
+    let dispatch = useDispatch()
 
+    let [show, setShow] = useState()
+    let [showe, setShowe] = useState()
 
     let getData = () => {
         axios.get(`https://dummyjson.com/products/${productId.id}`).then((response) => {
@@ -25,14 +31,18 @@ const ProductDetails = () => {
         getData()
     }, [])
 
-    let clientRating = Array.from({length:5}, (elm, index)=>{
+    let clientRating = Array.from({ length: 5 }, (elm, index) => {
         let ratingNumber = index + 0.5
-        return(
-            singleData.rating >= index + 1 ? <FaStar className='text-[#FFD881]' /> :   singleData.rating > ratingNumber ? <FaStarHalfAlt className=' text-[#FFD881]' />
-            : <FaRegStar/>
+        return (
+            singleData.rating >= index + 1 ? <FaStar className='text-[#FFD881]' /> : singleData.rating > ratingNumber ? <FaStarHalfAlt className=' text-[#FFD881]' />
+                : <FaRegStar />
         )
     })
     
+    let handleBuy = (item)=>{
+        dispatch(BuyNow({...item, qun:1}));
+        
+    }
 
 
     return (
@@ -55,7 +65,7 @@ const ProductDetails = () => {
                     <div className="">
                         <h3 className='font-sans font-bold   text-[42px]  text-[#262626] '>Product</h3>
                         <div className="flex items-center pt-[0px]">
-                           {clientRating}
+                            {clientRating}
                             <div className="pl-3">
                                 <h4 className='font-sans font-semibold   text-[20px]  text-[#262626]  '>Review</h4>
                             </div>
@@ -76,15 +86,36 @@ const ProductDetails = () => {
                         <h5 className='font-sans font-bold pt-[10px]  text-[20px]  text-[#262626] '>category : {singleData.category} </h5>
                     </div>
                     <div className=" pt-[30px] lg:flex relative   after:absolute after:content-[''] after:h-[1px] after:w-full after:bg-[#D8D8D8] after:bottom-[-20px] after:left-0">
-                        <a className=' font-sans font-bold   lg:text-[22px]  text-[#262626] py-[16px] px-[45px] border-2 border-[#262626] rounded-lg inline-block duration-300 ease-in-out hover:bg-[#262626] hover:text-[#fff]'>Add to Wish List</a>
+                        <Link to="/cart" onClick={()=>handleBuy(singleData)}>
+                         <a className=' font-sans font-bold   lg:text-[18px]  text-[#262626] py-[14px] px-[45px] border-2 border-[#262626] rounded-lg inline-block duration-500 ease-in-out hover:bg-[#262626] hover:text-[#fff]'>Buy Now</a>
+                         </Link>
 
-
-                        <a className=' font-sans font-bold lg:text-[22px] bg-[#fff]  text-[#262626] py-[16px] lg:px-[45px] p-[63px]  border-2 border-[#262626] rounded-lg inline-block lg:ms-4  duration-300 ease-in-out hover:bg-[#262626] hover:text-[#fff]'>Add to Cart</a>
+                        <a className=' font-sans font-bold lg:text-[18px] bg-[#fff]  text-[#262626] py-[14px] lg:px-[35px] p-[63px]  border-2 border-[#262626] rounded-lg inline-block lg:ms-4  duration-500 ease-in-out hover:bg-[#262626] hover:text-[#fff]'>Add to Cart</a>
 
                     </div>
-
-
+                  
                 </div>
+                <div className=" w-[50%] pt-[60px] pb-[10px]">
+                <div className="  border-b-[1px] py-2">
+                        <div onClick={() => setShow(!show)} className=" flex items-center justify-between pb-[10px] ">
+                            <h2 className=' font-sans font-bold text-[18px]'>FEATURES  & DETAILS</h2>
+                            {show == true ? <GiTireIronCross /> : <FaPlus />}
+                        </div>
+                        {show &&
+                            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        }
+                    </div>
+                    <div className=" pt-[30px] border-b-[1px] py-2">
+                        <div onClick={() => setShowe(!showe)} className=" flex items-center justify-between pb-[10px] ">
+                            <h2 className=' font-sans font-bold text-[18px]'>SHIPPING & RETURNS</h2>
+                            {showe == true ? <GiTireIronCross /> : <FaPlus />}
+                        </div>
+                        {showe &&
+                            <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        }
+                    </div>
+                </div>
+
             </Container>
         </section>
     )

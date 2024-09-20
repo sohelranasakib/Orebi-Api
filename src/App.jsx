@@ -12,6 +12,9 @@ import About from "./pages/About"
 import CheckOut from "./pages/CheckOut"
 import Login from "./pages/Login"
 import SignUp from "./pages/SignUp"
+import Cart from "./pages/Cart"
+import MyAccount from "./pages/MyAccount"
+import Error from "./pages/Error"
 
 
 
@@ -29,6 +32,9 @@ let router = createBrowserRouter(createRoutesFromElements(
     <Route path="/checkout" element={<CheckOut/>}></Route>
     <Route path="/login" element={<Login/>}></Route>
     <Route path="/signup" element={<SignUp/>}></Route>
+    <Route path="/cart" element={<Cart/>}></Route>
+    <Route path="/myaccount" element={<MyAccount/>}></Route>
+    <Route path="*" element={<Error/>}></Route>
     
   </Route>
 ))

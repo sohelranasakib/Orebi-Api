@@ -23,7 +23,7 @@ const Products = () => {
     let [category, setCategory] = useState([]);
     let [brand, setBrand] = useState([]);
     let [price, setPrice] = useState([]);
-    // let [categorySearchFilter,setCategorySearchFilter] = useState([]);
+    let [categorySearchFilter,setCategorySearchFilter] = useState([]);
     let [catshow, setCatShow] = useState(false)
     let [brandshow, setBrandShow] = useState(false)
     let [priceshow, setPriceShow] = useState(false)
@@ -40,14 +40,12 @@ const Products = () => {
         setBrand([...new Set(data.map((item) => item.brand))])
     }, [data])
 
-    // useEffect(()=>{
-    //     setPrice([...new Set(data.map((item)=>item.price)) ])
-    //   },[data])
+    
 
 
     let pageNumber = []
 
-    for (let i = 0; i < Math.ceil( data.length / perPage); i++) {
+    for (let i = 0; i < Math.ceil(categorySearchFilter.length > 0 ? categorySearchFilter : data.length / perPage); i++) {
         pageNumber.push(i)
     }
 
@@ -67,13 +65,16 @@ const Products = () => {
         }
     }
 
-    // let handlePrice = (value) =>{
-    //     setLowprice(value.low)
-    //     setHighprice(value.high)
-    //     let priceFilter = data.filter((item)=>item.price > value.low && item.price < value.high)
-    //     setFilterprice(priceFilter);
-    //    }
-      
+   let handleCategoryS = (citem)=>{
+     let categoryFilter = data.filter((item)=> item.category == citem)
+     setCategorySearchFilter(categoryFilter)
+   }
+     
+   let handleBrandS = (citem)=>{
+    let brandFilter = data.filter((item)=> item.brand == citem)
+    setCategorySearchFilter(brandFilter)
+
+   }
 
     return (
         <section className=' pt-[210px] py-[50px] lg:px-0 px-1'>
@@ -92,21 +93,21 @@ const Products = () => {
                             {catshow &&
                                 <ul className='overflow-y-scroll lg:h-[300px] h-[100px] '>
                                     {category.map((item) => (
-                                        <li className=' relative font-sans font-semibold   lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>{item}</li>
+                                        <li onClick={()=>handleCategoryS(item)} className=' relative font-sans font-semibold   lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out capitalize'>{item}</li>
                                     ))}
                                     <h3 className=' '></h3>
                                 </ul>
                             }
 
                         </div>
-                        <div className="">
+                        <div className=" lg:py-2">
                             <h2 onClick={() => setBrandShow(!brandshow)} className='font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center  cursor-pointer '> Brand {catshow == true ? <TiArrowSortedUp className='text-[28px] ' /> : <TiArrowSortedDown className='text-[28px] ' />}</h2>
 
 
                             {brandshow &&
                                 <ul className='overflow-y-scroll lg:h-[300px] h-[100px] '>
                                     {brand.map((item) => (
-                                        <li className=' relative font-sans font-semibold   lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out'>{item}</li>
+                                        <li onClick={()=>handleBrandS(item)} className=' relative font-sans font-semibold   lg:text-[16px] text-[10px]  text-[#262626] lg:mb-[10px] mb-[4px] lg:py-[10px] lg:w-[40%]  hover:bg-[#262626] hover:text-[#fff] rounded-lg after:absolute after:content-[""] after:h-[1px] after:w-[100%] after:bg-[#D8D8D8] after:left-0 after:bottom-0 cursor-pointer duration-700 ease-in-out capitalize'>{item}</li>
                                     ))}
                                     <h3 className=' '></h3>
                                 </ul>
@@ -171,7 +172,7 @@ const Products = () => {
 
 
                         <div className="flex justify-between flex-wrap">
-                            <ProductP allData={allData} />
+                            <ProductP allData={allData} categorySearchFilter={categorySearchFilter}/>
                         </div>
                         <div className=" text-end">
                             <PaginationArea pageNumber={pageNumber} Paginate={Paginate} currentPage={currentPage} next={next} prev={prev} />
