@@ -87,7 +87,7 @@ const Products = () => {
                     <div className=" w-[29%] lg:mr-1 mr-1">
 
                         <div className="">
-                            <h2 onClick={() => setCatShow(!catshow)} className='font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center  cursor-pointer '> Category {catshow == true ? <TiArrowSortedUp className='text-[28px] ' /> : <TiArrowSortedDown className='text-[28px] ' />}</h2>
+                            <h2 onClick={() => setCatShow(!catshow)} className=' relative font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center  cursor-pointer  after:absolute after:contain-[""] after:bottom-0 after:left-0 after:h-[3px] lg:after:w-[120px] after:w-[70px] after:bg-[#fff] hover:after:bg-black duration-500 ease-in-out '> Category {catshow == true ? <TiArrowSortedUp className='text-[28px] ' /> : <TiArrowSortedDown className='text-[28px] ' />}</h2>
 
 
                             {catshow &&
@@ -101,7 +101,7 @@ const Products = () => {
 
                         </div>
                         <div className=" lg:py-2">
-                            <h2 onClick={() => setBrandShow(!brandshow)} className='font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center  cursor-pointer '> Brand {catshow == true ? <TiArrowSortedUp className='text-[28px] ' /> : <TiArrowSortedDown className='text-[28px] ' />}</h2>
+                            <h2 onClick={() => setBrandShow(!brandshow)} className='relative font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center  cursor-pointer  after:absolute after:contain-[""] after:bottom-0 after:left-0 after:h-[3px] lg:after:w-[80px] after:w-[45px] after:bg-[#fff] hover:after:bg-black duration-500 ease-in-out  '> Brand {catshow == true ? <TiArrowSortedUp className='text-[28px] ' /> : <TiArrowSortedDown className='text-[28px] ' />}</h2>
 
 
                             {brandshow &&
@@ -116,7 +116,7 @@ const Products = () => {
                         </div>
                         <div className="">
                             <div className=" ">
-                                <h2 onClick={() => setPriceShow(!priceshow)} className='font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center cursor-pointer '>Price {priceshow == true ? <TiArrowSortedUp className='text-[28px]' /> : <TiArrowSortedDown className='text-[28px]' />}</h2>
+                                <h2 onClick={() => setPriceShow(!priceshow)} className=' relative font-sans font-bold   lg:text-[28px]  text-[#262626] flex justify-between items-center cursor-pointer  after:absolute after:contain-[""] after:bottom-0 after:left-0 after:h-[3px] lg:after:w-[70px] after:w-[40px] after:bg-[#fff] hover:after:bg-black duration-500 ease-in-out '>Price {priceshow == true ? <TiArrowSortedUp className='text-[28px]' /> : <TiArrowSortedDown className='text-[28px]' />}</h2>
 
                             </div>
                             {priceshow &&

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const MyAccount = () => {
   return (
-    <section className=' pt-[185px] pb-[50px]'>
+    <section className=' pt-[185px] pb-[50px] lg:px-0 px-4'>
         <Container>
         <div className="lg:pb-[50px] pb-[10px]">
             <h2 className="font-sans text-[#262626] lg:text-[36px] text-[20px] font-bold">
@@ -31,7 +31,7 @@ const MyAccount = () => {
                 <div className=" w-[70%]">
                 <div className=" mt-7">
                                 <h3 className='font-dmsans text-[16px] font-normal leading-[30px] text-[#767676]'>Hello <span className='text-[#262626]'>admin</span> (not <span className='text-[#262626]'>admin</span>? <span className='text-[#262626]'>Log out</span>)</h3>
-                                <p className='font-dmsans text-[16px] font-normal leading-[30px] text-[#767676] w-[80%] mt-[50px]'>From your account dashboard you can view your <span className='text-[#262626]'>recent orders</span>, manage your <span className='text-[#262626]'>shipping and billing addresses</span>, and <span className='text-[#262626]'>edit your password and account details.</span></p>
+                                <p className='font-dmsans text-[16px] font-normal leading-[30px] text-[#767676] w-[80%] lg:mt-[50px]'>From your account dashboard you can view your <span className='text-[#262626]'>recent orders</span>, manage your <span className='text-[#262626]'>shipping and billing addresses</span>, and <span className='text-[#262626]'>edit your password and account details.</span></p>
                             </div>
                 </div>
             </div>

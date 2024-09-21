@@ -2,12 +2,15 @@ import React, { useEffect, useRef, useState } from 'react'
 import Container from './Container'
 import Flex from './Flex'
 import { FaBarsStaggered, FaCartArrowDown } from 'react-icons/fa6';
-import { FaSearch, FaUser, FaCaretDown } from 'react-icons/fa';
+import { FaSearch, FaUser, FaCaretDown, FaShoppingCart } from 'react-icons/fa';
 import { GiTireIronCross } from 'react-icons/gi';
 import logo from "../assets/logo.png"
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Navber = () => {
+    let data = useSelector((state)=>state.product.buyItem)
+    
     let [cartShow, setCartShow] = useState(false);
     let [accountShow, setAccountShow] = useState(false);
     let [userShow, setUserShow] = useState(false);
@@ -41,7 +44,7 @@ const Navber = () => {
             <div className='bg-[#D8D8D8] h-[100px] '>
             <Container>
                 <Flex className=" h-[100px] items-center">
-                    <div className=" lg:w-[30%] w-full">
+                    <div className=" lg:w-[30%] w-[15%]">
                         <div className=" lg:ml-0 ml-3">
                             <div ref={cartref} className=" relative flex lg:items-center items-center  gap-x-3">
                                 <div className="cursor-pointer">
@@ -77,29 +80,36 @@ const Navber = () => {
                             </div>
                         }
                     </div>
-                    <div className="lg:w-[40%] w-full">
+                    <div className="lg:w-[40%]">
                         <div className="">
                               <div className="relative inline-block">
-                            <input type="search" placeholder='Type to search' className='border-[2px] border-[#F0F0F0] lg:w-[644px] w-[300px] py-4 pl-5 pr-12 outline-none' />
+                            <input type="search" placeholder='Type to search' className='border-[2px] border-[#F0F0F0] lg:w-[644px] w-[200px] lg:py-4 py-2 pl-5 pr-12 outline-none' />
                             <div className="absolute top-[50%] right-[15px] translate-y-[-50%]">
                                 <FaSearch />
                             </div>
                         </div>
                         </div>
                     </div>
-                    <div className=" w-[30%] flex gap-2 justify-end items-center pt-4">
-                        <div ref={accountref} className=" relative  ml-3 group overflow-hidden">
+                  <div className=" lg:w-[30%] w-[23%]">
+                  <div className="  flex gap-2 justify-end items-center">
+                        <div ref={accountref} className="">
                             <div className="flex">
                             <FaUser className=' text-[22px]' />
                             <FaCaretDown className=' text-[24px]' />
                             </div>
-                            <h3 className='lg:text-[16px] text-[14px] opacity-0 group-hover:opacity-[1] duration-300 ease-in-out'>Account</h3>
                         </div>
                       
-                        <div ref={userref} className=" relative mr-3 group overflow-hidden">
-                            <FaCartArrowDown className=' text-[22px]' />
-                            <h3 className='lg:text-[16px] text-[14px] opacity-0 group-hover:opacity-[1] duration-300 ease-in-out'>Cart</h3>
+                        <div ref={userref} className="">
+                           <div className=" relative ">
+                           <FaCartArrowDown className=' text-[22px]' />
+                           {data.length > 0 ?  <div className=" absolute  h-[20px] w-[20px] bg-[#262626] left-[20px] top-[-15px] rounded-full text-[#fff] text-center z-50">
+                                  {data.length}
+                           </div> : "" }
+                            
+                           </div>
                         </div>
+                           
+                          
                     </div>
                     {accountShow &&
                         <div className="absolute z-50 top-[150px] lg:right-[150px] right-4 w-[200px] py-[10px] bg-[#262626]">
@@ -147,6 +157,7 @@ const Navber = () => {
 
                     </div>
                     }
+                  </div>
                 </Flex>
             </Container>
         </div>

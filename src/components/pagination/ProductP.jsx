@@ -1,15 +1,36 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { apiData } from '../ContextApi'
 import { FaHeart, FaShoppingCart, FaSearchPlus } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi";
 import { Link } from 'react-router-dom';
 
 const ProductP = ({allData, categorySearchFilter}) => {
+
+  let [filterShow, setFilterShow] = useState([])
+  let [allshow, setAllShow] = useState(true)
+
+  useEffect(()=>{
+     let filterAmi = categorySearchFilter.slice(0,5)
+     setFilterShow(filterAmi)
+  },[categorySearchFilter])
+  
+  let handleShow = ()=>{
+    setFilterShow(categorySearchFilter)
+    setAllShow(false)
+  }
+
+  let handleHide = ()=>{
+    let filterAmi = categorySearchFilter.slice(0,5)
+    setFilterShow(filterAmi)
+    setAllShow(true)
+  }
   
   return (
     <>
     {categorySearchFilter.length > 0 ?
-      categorySearchFilter.map((item) => (
+      <div className="">
+        <div className=" flex justify-between flex-wrap">
+        {filterShow.map((item) => (
         <div className=" lg:w-[32%] w-[48%] ">
           <div className=" relative group overflow-hidden ">
             <Link to={`/product/${item.id}`}>
@@ -42,7 +63,15 @@ const ProductP = ({allData, categorySearchFilter}) => {
               </div>
             </div>
         </div>
-      ))
+      ))}
+      </div>
+      {allshow ? categorySearchFilter.length > 5 && 
+      <button onClick={handleShow} className=' font-sans font-bold text-[18px] px-[20px] py-[10px] border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-500 ease-in-out'>Show All</button>
+      :
+      <button onClick={handleHide} className=' font-sans font-bold text-[18px] px-[20px] py-[10px] border-2 hover:bg-[#262626] hover:text-[#fff] rounded-lg duration-500 ease-in-out'>Hide</button>
+      }
+     
+      </div>
      :
      allData.map((item) => (
       <div className=" lg:w-[32%] w-[48%] ">
