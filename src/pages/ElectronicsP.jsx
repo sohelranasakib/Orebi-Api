@@ -5,9 +5,19 @@ import { apiData } from '../components/ContextApi'
 import { Tabs, TabList, TabPanel, Tab } from 'react-tabs';
 import { Link } from 'react-router-dom';
 import { FaSearchPlus } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import { BuyNow } from '../components/slice/productSlice';
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ElectronicsP = () => {
     let data = useContext(apiData)
+    let dispatch = useDispatch()
+
+    let handleToCart = (item)=>{
+        dispatch(BuyNow({...item, qun:1}))
+        toast.success('Added to cart successfully')
+    }
     
 
     let phone = data.filter(product => product.id >= 121 && product.id <= 136);
@@ -55,7 +65,7 @@ const ElectronicsP = () => {
                                         View Details
                                         </Link>
                                         </h3>
-                                        <div className="">
+                                        <div onClick={()=>handleToCart(item)} className="">
                                         <FaSearchPlus className=' lg:text-[26px] text-[red]'/>
                                         </div>
                                      </div>
@@ -93,7 +103,7 @@ const ElectronicsP = () => {
                                         View Details
                                         </Link>
                                         </h3>
-                                        <div className="">
+                                        <div onClick={()=>handleToCart(item)} className="">
                                         <FaSearchPlus className=' lg:text-[26px] text-[red]'/>
                                         </div>
                                      </div>
@@ -131,7 +141,7 @@ const ElectronicsP = () => {
                                         View Details
                                         </Link>
                                         </h3>
-                                        <div className="">
+                                        <div onClick={()=>handleToCart(item)} className="">
                                         <FaSearchPlus className=' lg:text-[26px] text-[red]'/>
                                         </div>
                                      </div>
@@ -169,7 +179,7 @@ const ElectronicsP = () => {
                                         View Details
                                         </Link>
                                         </h3>
-                                        <div className="">
+                                        <div onClick={()=>handleToCart(item)} className="">
                                         <FaSearchPlus className=' lg:text-[26px] text-[red]'/>
                                         </div>
                                      </div>
@@ -207,7 +217,7 @@ const ElectronicsP = () => {
                                         View Details
                                         </Link>
                                         </h3>
-                                        <div className="">
+                                        <div onClick={()=>handleToCart(item)} className="">
                                         <FaSearchPlus className=' lg:text-[26px] text-[red]'/>
                                         </div>
                                      </div>
@@ -245,7 +255,7 @@ const ElectronicsP = () => {
                                         View Details
                                         </Link>
                                         </h3>
-                                        <div className="">
+                                        <div onClick={()=>handleToCart(item)} className="">
                                         <FaSearchPlus className=' lg:text-[26px] text-[red]'/>
                                         </div>
                                      </div>
@@ -268,6 +278,19 @@ const ElectronicsP = () => {
                         </TabPanel>
                        
                         
+                        <ToastContainer className=" font-sans font-bold text-[18px] text-center"
+                            position="top-center"
+                            autoClose={2500}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="dark"
+
+                        />
                     </Container>
                 </Tabs>
             </div>

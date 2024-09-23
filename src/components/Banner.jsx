@@ -5,6 +5,7 @@ import Flex from './Flex'
 import { TbTruckDelivery } from "react-icons/tb";
 import { IoReload } from "react-icons/io5";
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 
 const Banner = () => {
@@ -47,6 +48,7 @@ const Banner = () => {
       };
     return (
         <section className='pt-[178px]'>
+          <Link to="/product">
              <Slider {...settings}>
              <div className="">
                 <img src={banner} alt="" />
@@ -61,6 +63,7 @@ const Banner = () => {
                 <img src={banner} alt="" />
             </div>
              </Slider>
+             </Link>
             <Container>
                 <Flex className=" justify-between lg:px-0 px-2">
                     <div className=" flex items-center gap-2">

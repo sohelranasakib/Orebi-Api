@@ -3,8 +3,14 @@ import { apiData } from '../ContextApi'
 import { FaHeart, FaShoppingCart, FaSearchPlus } from "react-icons/fa";
 import { TfiReload } from "react-icons/tfi";
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { BuyNow } from '../slice/productSlice';
 
-const ProductP = ({allData, categorySearchFilter}) => {
+const ProductP = ({allData, categorySearchFilter, multiList}) => {
+  console.log(multiList);
+  
+
+  let dispatch = useDispatch()
 
   let [filterShow, setFilterShow] = useState([])
   let [allshow, setAllShow] = useState(true)
@@ -24,12 +30,17 @@ const ProductP = ({allData, categorySearchFilter}) => {
     setFilterShow(filterAmi)
     setAllShow(true)
   }
+
+  let handleAddTo = (item)=>{
+    dispatch(BuyNow({...item, qun:1})
+    )
+  }
   
   return (
     <>
     {categorySearchFilter.length > 0 ?
       <div className="">
-        <div className=" flex justify-between flex-wrap">
+        <div className=" flex flex-wrap justify-between">
         {filterShow.map((item) => (
         <div className=" lg:w-[32%] w-[48%] ">
           <div className=" relative group overflow-hidden ">
@@ -73,7 +84,8 @@ const ProductP = ({allData, categorySearchFilter}) => {
      
       </div>
      :
-     allData.map((item) => (
+     <div className={`${multiList == "activeList" ? "" : "flex justify-between flex-wrap"}`}>
+         { allData.map((item) => (
       <div className=" lg:w-[32%] w-[48%] ">
         <div className=" relative group overflow-hidden ">
           <Link to={`/product/${item.id}`}>
@@ -84,7 +96,7 @@ const ProductP = ({allData, categorySearchFilter}) => {
             <ul className=' lg:pr-5'>
               <li className='flex items-center justify-end lg:gap-x-4   font-sans font-bold   lg:text-[16px] text-[8px]  text-[#818181] hover:text-[#262626]'>Add to Wish List <FaHeart /></li>
               <li className='flex items-center  justify-end lg:gap-x-4 lg:py-3  font-sans font-bold   lg:text-[16px] text-[8px]  text-[#818181] hover:text-[#262626]'>Compear<TfiReload /></li>
-              <li className='flex items-center  justify-end lg:gap-x-4  font-sans font-bold   lg:text-[16px] text-[8px]  text-[#818181] hover:text-[#262626]'>Add to Cart <FaShoppingCart /></li>
+              <li  onClick={()=>handleAddTo(item)} className='flex items-center  justify-end lg:gap-x-4  font-sans font-bold   lg:text-[16px] text-[8px]  text-[#818181] hover:text-[#262626]'>Add to Cart <FaShoppingCart /></li>
             </ul>
           </div>
           <div className=" absolute top-[14px] lg:left-[10px] left-[5px]">
@@ -106,7 +118,9 @@ const ProductP = ({allData, categorySearchFilter}) => {
             </div>
           </div>
       </div>
-    ))
+    ))}
+     </div>
+    
       }
       
 

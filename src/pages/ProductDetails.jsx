@@ -9,6 +9,8 @@ import { FaStar, FaRegStar, FaPlus } from "react-icons/fa6";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { GiTireIronCross } from "react-icons/gi";
 import { BuyNow } from '../components/slice/productSlice'
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ProductDetails = () => {
@@ -42,6 +44,11 @@ const ProductDetails = () => {
     let handleBuy = (item)=>{
         dispatch(BuyNow({...item, qun:1}));
         
+    }
+
+    let handleToCart =(item)=>{
+        dispatch(BuyNow({...item, qun:1}));
+        toast.success('Added to cart successfully')
     }
 
 
@@ -90,7 +97,7 @@ const ProductDetails = () => {
                          <a className=' font-sans font-bold   lg:text-[18px]  text-[#262626] py-[14px] px-[45px] border-2 border-[#262626] rounded-lg inline-block duration-500 ease-in-out hover:bg-[#262626] hover:text-[#fff]'>Buy Now</a>
                          </Link>
 
-                        <a className=' font-sans font-bold lg:text-[18px] bg-[#fff]  text-[#262626] py-[14px] lg:px-[35px] p-[63px]  border-2 border-[#262626] rounded-lg inline-block lg:ms-4  duration-500 ease-in-out hover:bg-[#262626] hover:text-[#fff]'>Add to Cart</a>
+                        <a onClick={()=>handleToCart(singleData)} className=' font-sans font-bold lg:text-[18px] bg-[#fff]  text-[#262626] py-[14px] lg:px-[35px] p-[63px]  border-2 border-[#262626] rounded-lg inline-block lg:ms-4  duration-500 ease-in-out hover:bg-[#262626] hover:text-[#fff]'>Add to Cart</a>
 
                     </div>
                   
@@ -115,7 +122,19 @@ const ProductDetails = () => {
                         }
                     </div>
                 </div>
-
+          <ToastContainer className=" font-sans font-bold text-[18px] text-center"
+            position="top-center"
+            autoClose={2500}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+             theme="dark"
+            
+          />
             </Container>
         </section>
     )

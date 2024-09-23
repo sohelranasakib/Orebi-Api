@@ -32,6 +32,8 @@ const Products = () => {
     let [highPrice,setHighprice] = useState("");
     let [filterprice,setFilterprice] = useState([]);
 
+    let [multiList, setMultiList] = useState('')
+
 
     useEffect(() => {
         setCategory([...new Set(data.map((item) => item.category))])
@@ -74,6 +76,11 @@ const Products = () => {
     let brandFilter = data.filter((item)=> item.brand == citem)
     setCategorySearchFilter(brandFilter)
 
+   }
+
+   let handleList = ()=>{
+    setMultiList("activeList");
+    
    }
 
     return (
@@ -143,10 +150,10 @@ const Products = () => {
                     <div className=" w-[68%]">
                         <div className=" flex justify-between pb-[30px]">
                             <div className="flex lg:gap-4 gap-2 items-center">
-                                <div className="lg:h-[50px] h-[27px] lg:w-[50px] w-[25px] flex justify-center items-center text-[#000] border-[1px] border-[#000] text-[20px]">
+                                <div onClick={()=>setMultiList("")} className={`lg:h-[50px] h-[27px] lg:w-[50px] w-[25px] flex justify-center items-center text-[#000] border-[1px] border-[#000] text-[20px] ${multiList == "activeList" ? "bg-white " : "bg-black text-white"} border-[1px] border-[#737373]`}>
                                     < IoGrid className=' text-[26px]' />
                                 </div>
-                                <div className=" lg:h-[50px] h-[27px] lg:w-[50px] w-[25px] flex justify-center items-center text-[#000] border-[1px] border-[#000] text-[20px]">
+                                <div onClick={handleList} className={` lg:h-[50px] h-[27px] lg:w-[50px] w-[25px] flex justify-center items-center text-[#000] border-[1px] border-[#000] text-[20px] ${multiList == "activeList" ? "bg-black text-white" : "bg-white"} border-[1px] border-[#737373] `}>
                                     < FaListUl className=' text-[26px]' />
                                 </div>
                             </div>
@@ -171,8 +178,8 @@ const Products = () => {
                         </div>
 
 
-                        <div className="flex justify-between flex-wrap">
-                            <ProductP allData={allData} categorySearchFilter={categorySearchFilter}/>
+                        <div className="">
+                            <ProductP allData={allData} categorySearchFilter={categorySearchFilter} multiList={multiList}/>
                         </div>
                         <div className=" text-end">
                             <PaginationArea pageNumber={pageNumber} Paginate={Paginate} currentPage={currentPage} next={next} prev={prev} />

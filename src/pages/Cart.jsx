@@ -85,7 +85,7 @@ const Cart = () => {
               <Flex className="justify-between items-center font-sans text-[16px] text-[#262626] font-bold border-[1px] pl-5">
                 <div className="w-[40%] flex lg:gap-x-12 gap-x-2 items-center">
                   <div onClick={() => handleRemove(index)} className="cursor-pointer">
-                    <ImCross className=" lg:text-[0px] text-[10px]"/>
+                    <ImCross className=" lg:text-[18px] text-[10px]"/>
                   </div>
                   <div className="">
                     <img
@@ -94,11 +94,11 @@ const Cart = () => {
                       alt="cartimg"
                     />
                   </div>
-                  <div className=" lg:text-[0px] text-[12px]">
+                  <div className=" lg:text-[18px] text-[12px]">
                     <h4>{item.title}</h4>
                   </div>
                 </div>
-                <div className="lg:w-[15%] lg:text-[0px] text-[12px] text-center">
+                <div className="lg:w-[15%] lg:text-[18px] text-[12px] text-center">
                   <h4>${item.price}</h4>
                 </div>
                 <div className="lg:w-[30%] w-[5%] flex justify-center">
@@ -112,7 +112,7 @@ const Cart = () => {
                     </div>
                   </div>
                 </div>
-                <div className="w-[15%] lg:text-[0px] text-[14px] text-center">
+                <div className="w-[15%] lg:text-[18px] text-[14px] text-center">
                   <h4>${item.price * item.qun}</h4>
                 </div>
               </Flex>
